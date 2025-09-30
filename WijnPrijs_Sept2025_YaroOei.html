@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wijnprijs excl. BTW naar Wijnprijs op Kaart converter</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    input, button { font-size: 1rem; padding: 8px; margin-top: 10px; }
+    #result { margin-top: 20px; font-weight: bold; }
+    .input-row { display: flex; align-items: center; gap: 5px; }
+    .input-row span { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Wijnprijs excl. BTW naar Wijnprijs op Kaart</h1>
+  <p style="font-style: italic; color: gray; margin-top: -10px;">
+    author: Yaro Oei · Sept 2025 · Toscanini
+  </p>
+
+  <p>Vul hier de wijnprijs excl. BTW in:</p>
+  <div class="input-row">
+    <input type="number" id="inputValue" step="0.01" />
+  </div>
+  <button onclick="convertNumber()">Convert</button>
+  <div id="result"></div>
+
+  <script>
+    function convertNumber() {
+      const value = parseFloat(document.getElementById("inputValue").value);
+      if (isNaN(value)) {
+        document.getElementById("result").innerText = "⚠️ Vul een geldig getal in.";
+        return;
+      }
+
+      let prijsOpKaart;
+      const Mauro_veglio_Barolo_inkoop = 31.26;
+      const Mauro_veglio_Barolo_prijsopKaart = 96;
+
+      // Wijn formules
+      if (value < Mauro_veglio_Barolo_inkoop) {
+        prijsOpKaart = (value)**2 * -0.024814556 + value * 3.64567065 + 8.1949; 
+      } else {
+        prijsOpKaart = (value - Mauro_veglio_Barolo_inkoop) * 2.532 + Mauro_veglio_Barolo_prijsopKaart; 
+      }
+
+      document.getElementById("result").innerText = "Prijs op kaart: € " + prijsOpKaart.toFixed(0);
+    }
+  </script>
+</body>
+</html>
+
