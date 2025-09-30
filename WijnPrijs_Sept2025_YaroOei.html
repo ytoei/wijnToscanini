@@ -5,21 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wijnprijs excl. BTW naar Wijnprijs op Kaart converter</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    input, button { font-size: 1rem; padding: 8px; margin-top: 10px; }
-    #result { margin-top: 20px; font-weight: bold; }
-    .input-row { display: flex; align-items: center; gap: 5px; }
-    .input-row span { font-weight: bold; }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #fafafa;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+    .subtitle {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .input-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+    input {
+      font-size: 1.2rem;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 150px;
+      text-align: right;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      background-color: #5c8df6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    button:hover {
+      background-color: #3d6fe0;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #222;
+    }
   </style>
 </head>
 <body>
   <h1>Wijnprijs excl. BTW naar Wijnprijs op Kaart</h1>
-  <p style="font-style: italic; color: gray; margin-top: -10px;">
-    author: Yaro Oei · Sept 2025 · Toscanini
-  </p>
+  <p class="subtitle">author: Yaro Oei · Sept 2025 · Toscanini</p>
 
   <p>Vul hier de wijnprijs excl. BTW in:</p>
   <div class="input-row">
+    <span>€</span>
     <input type="number" id="inputValue" step="0.01" />
   </div>
   <button onclick="convertNumber()">Convert</button>
@@ -37,7 +91,6 @@
       const Mauro_veglio_Barolo_inkoop = 31.26;
       const Mauro_veglio_Barolo_prijsopKaart = 96;
 
-      // Wijn formules
       if (value < Mauro_veglio_Barolo_inkoop) {
         prijsOpKaart = (value)**2 * -0.024814556 + value * 3.64567065 + 8.1949; 
       } else {
@@ -49,4 +102,3 @@
   </script>
 </body>
 </html>
-
