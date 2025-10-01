@@ -65,6 +65,12 @@
       font-weight: bold;
       color: #222;
     }
+    #deliResult {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #222;
+    }
   </style>
 </head>
 <body>
@@ -78,26 +84,32 @@
   </div>
   <button onclick="convertNumber()">Convert</button>
   <div id="result"></div>
+  <div id="deliResult"></div>
 
   <script>
     function convertNumber() {
       const value = parseFloat(document.getElementById("inputValue").value);
       if (isNaN(value)) {
         document.getElementById("result").innerText = "⚠️ Vul een geldig getal in.";
+        document.getElementById("deliResult").innerText = "";
         return;
       }
 
-      let prijsOpKaart;
+      let prijsOpKaart, deliPrijs;
       const Mauro_veglio_Barolo_inkoop = 31.26;
       const Mauro_veglio_Barolo_prijsopKaart = 96;
-
+      // berekening voor prijs op kaart
       if (value < Mauro_veglio_Barolo_inkoop) {
         prijsOpKaart = (value)**2 * -0.024814556 + value * 3.64567065 + 8.1949; 
       } else {
         prijsOpKaart = (value - Mauro_veglio_Barolo_inkoop) * 2.532 + Mauro_veglio_Barolo_prijsopKaart; 
       }
 
+      // berekening voor Deli Prijs
+      deliPrijs = value * 1.5 * 1.21;
+
       document.getElementById("result").innerText = "Prijs op kaart: € " + prijsOpKaart.toFixed(0);
+      document.getElementById("deliResult").innerText = "Deli prijs: € " + deliPrijs.toFixed(0);
     }
   </script>
 </body>
