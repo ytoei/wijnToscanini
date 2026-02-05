@@ -75,7 +75,7 @@
 </head>
 <body>
   <h1>Wijnprijs excl. BTW naar Wijnprijs op Kaart</h1>
-  <p class="subtitle">author: Yaro Oei · Sept 2025 · Toscanini</p>
+  <p class="subtitle">author: Yaro Oei · updated January 2026 · Toscanini</p>
 
   <p>Vul hier de wijnprijs excl. BTW in:</p>
   <div class="input-row">
@@ -97,12 +97,12 @@
 
       let prijsOpKaart, deliPrijs;
       const Mauro_veglio_Barolo_inkoop = 31.26;
-      const Mauro_veglio_Barolo_prijsopKaart = 96;
+      const Mauro_veglio_Barolo_prijsopKaart = 97;
       // berekening voor prijs op kaart
       if (value < Mauro_veglio_Barolo_inkoop) {
-        prijsOpKaart = (value)**2 * -0.024814556 + value * 3.64567065 + 8.1949; 
+        prijsOpKaart = (value)**2 * -0.0130 + value * 3.0534 + 14.261; 
       } else {
-        prijsOpKaart = (value - Mauro_veglio_Barolo_inkoop) * 2.532 + Mauro_veglio_Barolo_prijsopKaart; 
+        prijsOpKaart = (value - Mauro_veglio_Barolo_inkoop) * 2.528 + Mauro_veglio_Barolo_prijsopKaart; 
       }
 
       // berekening voor Deli Prijs
@@ -114,3 +114,4 @@
   </script>
 </body>
 </html>
+
